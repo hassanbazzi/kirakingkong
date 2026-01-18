@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --color-coral: #e85a4f;
+  --color-coral-dark: #c44b42;
+  --color-pink: #d4726a;
+  --color-cream: #f5e6e0;
+  --color-dark: #1a1a1a;
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: white;
+  background-color: var(--color-dark);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Grain overlay effect */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Section heading style matching PDF */
+.section-heading {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: lowercase;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    4px 4px 8px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Body text style matching PDF */
+.body-text {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  color: white;
+  font-weight: 300;
+  text-shadow:
+    1px 1px 2px rgba(0, 0, 0, 0.9),
+    2px 2px 4px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Coral/pink gradient backgrounds */
+.bg-coral-gradient {
+  background: linear-gradient(135deg, var(--color-coral) 0%, var(--color-pink) 50%, var(--color-coral-dark) 100%);
+}
+
+/* Glitch stripes effect */
+.glitch-stripes {
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 8px,
+    rgba(0, 0, 0, 0.3) 8px,
+    rgba(0, 0, 0, 0.3) 12px
+  );
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-coral);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-pink);
+}
+
+/* Angled section clips for Stripe-style transitions */
+/* Slopes down to the RIGHT (high on left, low on right) */
+.section-angle-right {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 80px), 0 100%);
+  margin-bottom: -80px;
+  position: relative;
+}
+
+/* Slopes down to the LEFT (low on left, high on right) */
+.section-angle-left {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 80px));
+  margin-bottom: -80px;
+  position: relative;
+}
